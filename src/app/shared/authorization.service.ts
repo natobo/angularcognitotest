@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {AuthenticationDetails, CognitoUser, CognitoUserPool} from 'amazon-cognito-identity-js';
+import { AuthenticationDetails, CognitoUser, CognitoUserPool } from 'amazon-cognito-identity-js';
 import { Observable } from 'rxjs/Observable';
 
 const poolData = {
-  UserPoolId: 'Your user pool', // Your user pool id here
-  ClientId: 'Your Client Id' // Your client id here  
+  UserPoolId: 'us-east-1_vRp4t77EF', // Your user pool id here
+  ClientId: '4i6ajc9qfbimagvftp3hcg4b6a' // Your client id here  
 };
 
 const userPool = new CognitoUserPool(poolData);
@@ -15,8 +15,9 @@ export class AuthorizationService {
 
   constructor() { }
 
-  register(email, password) {
+  register(email: string, password: string) {
 
+    console.log(email, password);
     const attributeList = [];
 
     return Observable.create(observer => {
@@ -37,12 +38,12 @@ export class AuthorizationService {
 
   confirmAuthCode(code) {
     const user = {
-      Username : this.cognitoUser.username,
-      Pool : userPool
+      Username: this.cognitoUser.username,
+      Pool: userPool
     };
     return Observable.create(observer => {
       const cognitoUser = new CognitoUser(user);
-      cognitoUser.confirmRegistration(code, true, function(err, result) {
+      cognitoUser.confirmRegistration(code, true, function (err, result) {
         if (err) {
           console.log(err);
           observer.error(err);
@@ -54,30 +55,30 @@ export class AuthorizationService {
     });
   }
 
-  signIn(email, password) { 
+  signIn(email, password) {
 
     const authenticationData = {
-      Username : email,
-      Password : password,
+      Username: email,
+      Password: password,
     };
     const authenticationDetails = new AuthenticationDetails(authenticationData);
 
     const userData = {
-      Username : email,
-      Pool : userPool
+      Username: email,
+      Pool: userPool
     };
     const cognitoUser = new CognitoUser(userData);
-    
+
     return Observable.create(observer => {
 
       cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: function (result) {
-          
+
           //console.log(result);
           observer.next(result);
           observer.complete();
         },
-        onFailure: function(err) {
+        onFailure: function (err) {
           console.log(err);
           observer.error(err);
         },
@@ -85,7 +86,7 @@ export class AuthorizationService {
     });
   }
 
-  isLoggedIn() {    
+  isLoggedIn() {
     return userPool.getCurrentUser() != null;
   }
 
