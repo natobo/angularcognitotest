@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <h1>Crear producto</h1>
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+          <label for="id">id</label>
+          <input type="number" name="id" id="email" ngModel class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="nombre">nombre</label>
+          <input type="text" name="nombre" id="nombre" ngModel class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="precio">precio</label>
+          <input type="number" name="precio" id="precio" ngModel class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="descripcion">descripcion</label>
+          <input type="text" name="descripcion" id="descripcion" ngModel class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="imagenUrl">imagenUrl</label>
+          <input type="text" name="imagenUrl" id="imagenUrl" ngModel class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Crear</button>
+      </form>
+    </div>
+  </div>
+  <br />
+</div>

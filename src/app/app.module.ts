@@ -19,6 +19,9 @@ import { FiltersComponent } from './shopping-cart/filters/filters.component';
 import { CartItemComponent } from './shopping-cart/cart/cart-item/cart-item.component';
 import { MessengerService } from './shared/messenger.service';
 import { ProductService } from './shared/product.service';
+import { FormCreateComponent } from './restapi/form-create/form-create.component';
+import { FormDeleteComponent } from './restapi/form-delete/form-delete.component';
+import { FormUpdateComponent } from './restapi/form-update/form-update.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,7 @@ import { ProductService } from './shared/product.service';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    RestApiComponent, ShoppingCartComponent, ProductListComponent, ProductItemComponent, CartComponent, FiltersComponent, CartItemComponent
+    RestApiComponent, ShoppingCartComponent, ProductListComponent, ProductItemComponent, CartComponent, FiltersComponent, CartItemComponent, FormCreateComponent, FormDeleteComponent, FormUpdateComponent
   ],
   imports: [
     BrowserModule,
