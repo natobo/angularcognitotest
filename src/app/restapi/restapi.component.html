@@ -12,21 +12,21 @@
   <h2>Rest Api Output</h2>
   <table align="center">
     <thead>
-      <tr>        
-        <th>Name</th>
-        <th>Age</th>
-        <th>Cars</th>
+      <tr>
+        <th>id</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>precio</th>
+        <th>imagenUrl</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let person of _data">        
-        <td>{{person.name}}</td>
-        <td>{{person.age}}</td>        
-        <td>
-          <div *ngFor="let car of person.cars">
-            {{car}}
-          </div>
-        </td>
+      <tr *ngFor="let item of Items">
+        <td>{{item.id}}</td>
+        <td>{{item.nombre}}</td>
+        <td>{{item.descripcion}}</td>
+        <td>{{item.precio}}</td>
+        <td>{{item.imagenUrl}}</td>
       </tr>
     </tbody>
   </table>
